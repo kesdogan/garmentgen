@@ -31,3 +31,8 @@ output*
 
 # Nicegui
 .nicegui
+
+# generated dataset
+garmentcodedata*
+testcodedata*
+extensive_test_*
