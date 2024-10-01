@@ -411,6 +411,8 @@ class Edge:
             * self (Edge object): Instance of Edge class from which the function is called
             * edge (dict): edge information
         """
+
+        self.label = edge['label'] if 'label' in edge else ''
         start, end = self.endpoints
 
         if 'curvature' in edge:
@@ -443,7 +445,7 @@ class Edge:
 
             else:
                 raise NotImplementedError(
-                    f'{self.__class__.__name__}::{self.name}::Unknown curvature type {edge["curvature"]["type"]}')
+                    f'{self.__class__.__name__}::{self.label}::Unknown curvature type {edge["curvature"]["type"]}')
 
         else:
             self.curve = svgpath.Line(*pat_utils.list_to_c([start, end]))
@@ -454,8 +456,8 @@ class Edge:
 
         self.n_edge_verts = n_edge_verts
 
-        if n_edge_verts == 2 and res > 1.0:
-            print(f'{self.__class__.__name__}::{self.name}::WARNING::Detected edge represented only by two vertices..'
+        if n_edge_verts == 2 and res > 1.0:      
+            print(f'{self.__class__.__name__}::{self.label}::WARNING::Detected edge represented only by two vertices..'
                   'mesh resolution might be too low. resolution = {}, edge length = {}'.format(res, edgelength))
 
 
