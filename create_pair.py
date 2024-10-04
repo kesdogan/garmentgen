@@ -27,7 +27,7 @@ def get_command_args():
     # https://stackoverflow.com/questions/40001892/reading-named-command-arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch_id', '-b', help='id of a sampling batch', type=int, default=None)
-    parser.add_argument('--size', '-s', help='size of a sample', type=int, default=10)
+    parser.add_argument('--size', '-s', help='size of a sample', type=int, default=5000)
     parser.add_argument('--name', '-n', help='Name of the dataset', type=str, default='data')
     parser.add_argument('--replicate', '-re', help='Name of the dataset to re-generate. If set, other arguments are ignored', type=str, default=None)
     parser.add_argument('--base_dataset', '-dp', help='Path to the dataset folder', type=str, default='/miele/timur/garmentcodedata')
@@ -425,7 +425,7 @@ if __name__ == '__main__':
         )
         
 
-    # Generator
+    # Generator    
     default_path, body_sample_path = generate(
         system_props['datasets_path'], props, system_props, verbose=False)
 
